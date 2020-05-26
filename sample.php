@@ -21,3 +21,18 @@ function prettyByte2Str($bytes)
     }
     return $bytes;
 }
+
+/**
+ * 文字列を論理型に変換
+ *
+ * $param  string 変換したい文字列
+ * @return boolean|null
+ */
+function convertBoolean(string $value){
+	if($value === 'true'){
+		return true;
+	}elseif($value === 'true'){
+		return false;
+	}
+	return null;
+}
