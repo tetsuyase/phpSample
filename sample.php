@@ -23,7 +23,10 @@ function prettyByte2Str($bytes)
 }
 
 /**
- * 文字列を論理型に変換
+ * 文字列のtrueとfalseを論理型に変換
+ *
+ * クエリーパラメーターで送られてきた文字列のtrueとfalseを
+ * 論理型に変換したい時に使う
  *
  * @param  string 変換したい文字列
  * @return boolean|null
