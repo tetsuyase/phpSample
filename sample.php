@@ -40,3 +40,36 @@ function convertBoolean(string $value)
     }
     return null;
 }
+
+/**
+ * スネークケースをローワーキャメルケースに変換する
+ *
+ * @param  string 変換したい文字列
+ * @return string
+ */
+function convertSnakeCaseToLowerCamelCase($snake_case)
+{
+    $convert_list = str_split($snake_case);
+
+    // 大文字変換フラグ
+    $uppercase_flg = false;
+
+    // ローワーキャメルケースに変換
+    foreach ($convert_list as $key => $value){
+        if($uppercase_flg === true){
+            $convert_list[$key] = strtoupper($convert_list[$key]);
+
+            // 次の文字列は、変換の必要がないため
+            $uppercase_flg = false;
+        }
+
+        if($value === '_'){
+            // 「-」の次の文字列は大文字にする必要があるので、フラグをtrueにする
+            $uppercase_flg = true;
+
+            // 「-」は不要なので削除
+            unset($convert_list[$key]);
+        }
+    };
+    return implode($convert_list);
+}
