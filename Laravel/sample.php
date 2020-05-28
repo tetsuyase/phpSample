@@ -9,3 +9,12 @@ function getColumnList($table_name){
     $columns = \Schema::getColumnListing($table_name);
     return implode($columns, "\n");
 }
+
+
+/**
+ * クエリーをログに出力する
+ *
+ */
+\DB::listen(function ($query) {
+    \Log::info("Query Time:{$query->time}s] $query->sql");
+});
